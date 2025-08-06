@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Heet KaPatel - Portfolio</title>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Tailwind (compiled in React) -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Animated Programmer Background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(0, 255, 0, 0.05) 0px,
+          transparent 1px,
+          transparent 40px
+        );
+        animation: scrollBg 20s linear infinite;
+        z-index: -10;
+      }
+
+      @keyframes scrollBg {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 1000px;
+        }
+      }
+
+      /* Floating code overlay */
+      .floating-code {
+        position: fixed;
+        font-size: 18px;
+        font-family: monospace;
+        color: rgba(0, 255, 0, 0.08);
+        white-space: nowrap;
+        pointer-events: none;
+        animation: float 8s ease-in-out infinite;
+        z-index: -9;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-30px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white overflow-x-hidden relative">
+    <!-- Floating Programmer Code Background -->
+    <div class="absolute floating-code text-green-400 text-2xl top-10 left-10">{ "React": true }</div>
+    <div class="absolute floating-code text-blue-400 text-xl top-40 right-16">&lt;div&gt;Portfolio&lt;/div&gt;</div>
+    <div class="absolute floating-code text-yellow-300 text-xl bottom-40 left-20">console.log("Hire Heet");</div>
+    <div class="absolute floating-code text-pink-400 text-2xl bottom-20 right-32">function Dev(){return &lt;Code/&gt;}</div>
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

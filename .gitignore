@@ -1,0 +1,14 @@
+# Dependency folders
+node_modules
+
+# Production build folders
+build
+dist
+
+# Environment files
+.env
+
+# Optional: VSCode and system files
+.vscode
+.DS_Store
+Thumbs.db
