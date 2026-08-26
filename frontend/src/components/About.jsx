@@ -70,7 +70,7 @@ const About = () => (
         </div>
 
         <a
-          href="https://github.com/Heet-Kapatel"
+          href="https://github.com/heetp72"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full py-3 text-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm transition-colors border border-slate-700 flex items-center justify-center gap-2"

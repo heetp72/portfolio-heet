@@ -137,7 +137,7 @@ const Contact = () => {
                 <i className="fab fa-linkedin text-blue-400"></i> LinkedIn
               </a>
               <a
-                href="https://github.com/Heet-Kapatel"
+                href="https://github.com/heetp72"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-semibold text-center transition-all flex items-center justify-center gap-1.5"

@@ -12,7 +12,7 @@ const commands = [
   "email": "heetkapatel1505@gmail.com",
   "phone": "+91 9408355242",
   "links": {
-    "github": "https://github.com/Heet-Kapatel",
+    "github": "https://github.com/heetp72",
     "linkedin": "https://linkedin.com/in/Heet-Kapatel"
   }
 }`
@@ -57,6 +57,7 @@ const commands = [
   {
     "title": "Portfolio - Website",
     "stack": ["React", "Tailwind CSS"],
+    "repo": "https://github.com/heetp72/portfolio-heet",
     "period": "08/2025"
   }
 ]`

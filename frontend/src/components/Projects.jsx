@@ -78,7 +78,7 @@ const projects = [
       "Crafted modern glassmorphic UI components, animated statistics, and responsive layouts.",
       "Engineered an interactive developer terminal and smooth section navigation."
     ],
-    github: "https://github.com/Heet-Kapatel",
+    github: "https://github.com/heetp72/portfolio-heet",
     live: null
   }
 ];
