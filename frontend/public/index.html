@@ -1,84 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <title>Heet KaPatel - Portfolio</title>
+    <meta name="theme-color" content="#0B0F19" />
+    <meta name="description" content="Heet Patel - Full Stack Developer (React 19, TypeScript, NestJS, Prisma, PostgreSQL). 240+ production commits building enterprise ERP, healthcare SaaS, and multi-tenant platforms." />
+    <title>Heet Patel | Full Stack Developer (PERN & MERN)</title>
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome for Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-
-    <!-- Tailwind (compiled in React) -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
-      html {
-        scroll-behavior: smooth;
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0b0f19;
+        color: #f8fafc;
+        overflow-x: hidden;
       }
-
-      /* Animated Programmer Background */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: repeating-linear-gradient(
-          to bottom,
-          rgba(0, 255, 0, 0.05) 0px,
-          transparent 1px,
-          transparent 40px
-        );
-        animation: scrollBg 20s linear infinite;
-        z-index: -10;
+      code, pre, .font-mono {
+        font-family: 'JetBrains Mono', monospace;
       }
-
-      @keyframes scrollBg {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 0 1000px;
-        }
-      }
-
-      /* Floating code overlay */
-      .floating-code {
-        position: fixed;
-        font-size: 18px;
-        font-family: monospace;
-        color: rgba(0, 255, 0, 0.08);
-        white-space: nowrap;
-        pointer-events: none;
-        animation: float 8s ease-in-out infinite;
-        z-index: -9;
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-30px);
-        }
-        100% {
-          transform: translateY(0);
-        }
+      /* Subtle grid background */
+      .bg-grid-pattern {
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       }
     </style>
   </head>
-  <body class="bg-black text-white overflow-x-hidden relative">
-    <!-- Floating Programmer Code Background -->
-    <div class="absolute floating-code text-green-400 text-2xl top-10 left-10">{ "React": true }</div>
-    <div class="absolute floating-code text-blue-400 text-xl top-40 right-16">&lt;div&gt;Portfolio&lt;/div&gt;</div>
-    <div class="absolute floating-code text-yellow-300 text-xl bottom-40 left-20">console.log("Hire Heet");</div>
-    <div class="absolute floating-code text-pink-400 text-2xl bottom-20 right-32">function Dev(){return &lt;Code/&gt;}</div>
-
+  <body class="bg-[#0B0F19] text-slate-100 antialiased selection:bg-emerald-500 selection:text-black">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
