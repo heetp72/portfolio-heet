@@ -7,7 +7,7 @@ const commands = [
   "availability": "Immediate Joiner (0 Days Notice)",
   "openTo": ["Ahmedabad", "Vadodara", "GIFT City", "Remote"],
   "targetRole": "Full Stack Developer (PERN & MERN)",
-  "targetCTC": "₹28,000 – ₹40,000 / month (3.5 – 5.0 LPA)"
+  "status": "Ready to build & deploy"
 }`
   },
   {
@@ -25,7 +25,7 @@ const commands = [
   "totalCommits": 247,
   "velocity": "~3.5 production commits/day",
   "platformsDelivered": ["Earthmover ERP", "Medical CRM", "OMS SaaS"],
-  "bondPolicy": "No 2-year lock-in bonds accepted"
+  "architecture": "Clean Architecture & Strict TypeScript"
 }`
   }
 ];
