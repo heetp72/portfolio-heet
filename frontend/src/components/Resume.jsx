@@ -14,7 +14,7 @@ const Resume = () => (
         Download My Official Resume
       </h3>
       <p className="text-base text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-        Explore my technical skills, professional internship experience at SWC Infotech, education credentials, and enterprise projects in detail.
+        Explore my technical skills, professional internship experience at SWC Infotech, Svaapta Ally, and Sparks To Ideas, academic qualifications, and full-stack projects.
       </p>
 
       <div className="flex flex-wrap justify-center gap-4">

@@ -9,12 +9,12 @@ const Footer = () => (
         </div>
         <div>
           <span className="font-bold text-white tracking-tight">Heet Patel</span>
-          <span className="text-xs text-slate-400 block">Full Stack PERN & MERN Developer</span>
+          <span className="text-xs text-slate-400 block">Full Stack Developer</span>
         </div>
       </div>
 
       <div className="text-xs text-slate-400">
-        © {new Date().getFullYear()} Heet Patel. Built with <span className="text-emerald-400 font-semibold">React 19 & Tailwind CSS</span>.
+        © {new Date().getFullYear()} Heet Patel. Built with <span className="text-emerald-400 font-semibold">React & Tailwind CSS</span>.
       </div>
 
       <div className="flex gap-4 text-base text-slate-400">

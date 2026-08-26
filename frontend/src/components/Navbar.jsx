@@ -5,7 +5,7 @@ const sections = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#expertise" },
-  { name: "Certifications", href: "#certifications" },
+  { name: "Certificates", href: "#certifications" },
   { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" }
 ];
@@ -39,7 +39,7 @@ const Navbar = () => {
               Heet Patel
             </span>
             <span className="hidden sm:inline-block ml-2 px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">
-              PERN & MERN
+              Full Stack Developer
             </span>
           </div>
         </a>
@@ -58,13 +58,13 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right CTA: Resume Button */}
+        {/* Right CTA: Contact Button */}
         <div className="hidden lg:flex items-center gap-3">
           <a
             href="#contact"
             className="px-5 py-2.5 text-sm font-semibold text-black bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 rounded-xl transition-all duration-300 shadow-md hover:shadow-emerald-500/20 hover:scale-105"
           >
-            Hire Me
+            Get In Touch
           </a>
         </div>
 
@@ -97,7 +97,7 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center py-3 bg-emerald-500 text-black font-semibold rounded-xl"
             >
-              Let's Connect
+              Contact Me
             </a>
           </div>
         </div>

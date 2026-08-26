@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => (
   <section id="about" className="py-20 max-w-5xl mx-auto">
     <div className="text-center mb-12">
-      <h2 className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-2">Background & Philosophy</h2>
+      <h2 className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-2">Profile & Background</h2>
       <h3 className="text-3xl sm:text-4xl font-extrabold text-white">About Me</h3>
     </div>
 
@@ -11,27 +11,30 @@ const About = () => (
       {/* Left Column: Summary */}
       <div className="md:col-span-2 glass-card p-8 rounded-3xl space-y-5 text-slate-300 text-base leading-relaxed border border-slate-800">
         <p>
-          I am a <strong className="text-white">Full Stack Developer</strong> focused on building robust, production-grade applications that combine strong business domain logic with seamless user interfaces.
+          I am a <strong className="text-white">Full Stack Developer</strong> with strong <span className="text-emerald-400 font-semibold">OOP fundamentals</span> and hands-on experience in <span className="text-emerald-400 font-semibold">REST API development</span>.
         </p>
         <p>
-          During my internship at <strong className="text-emerald-400">SWC INFOTECH</strong>, I took end-to-end ownership of enterprise software across the <strong className="text-white">PERN and MERN stacks</strong>. I built double-entry accounting engines, integrated AI speech-to-text audio transcriptions, automated headless PDF generation with Puppeteer, and engineered multi-tenant database migrations.
+          During my professional internship at <strong className="text-emerald-400">SWC INFOTECH</strong>, I engineered and deployed <strong className="text-white">"medical-crm"</strong>, a comprehensive healthcare CRM using React, NestJS, and PostgreSQL. I developed scalable RESTful APIs to handle patient data and designed optimized relational database schemas ensuring data integrity and secure medical records management.
         </p>
         <p>
-          I hold a <strong className="text-white">B.Tech in Information Technology</strong> from SVIT Vasad (CGPA: 8.17) and a <strong className="text-white">Diploma in Computer Engineering</strong> from BBIT Anand (CGPA: 8.45). I write clean, testable code with high velocity (~3.5 commits/day) and zero ramp-up overhead.
+          Additionally, through internships at <strong className="text-white">Svaapta Ally IT Solutions</strong> and <strong className="text-white">Sparks To Ideas</strong>, I gained extensive experience building corporate-level web forms with robust client-side validation and responsive user interfaces using HTML, CSS, JavaScript, and Bootstrap.
+        </p>
+        <p>
+          I hold a <strong className="text-white">B.Tech in Information Technology</strong> from Sardar Vallabhbhai Patel Institute of Technology (CGPA: 8.17) and a <strong className="text-white">Diploma in Computer Engineering</strong> from Bhailalbhai and Bhikhbhai Institute of Technology (CGPA: 8.45).
         </p>
 
         <div className="pt-4 flex flex-wrap gap-3">
           <span className="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs font-medium text-emerald-400">
-            <i className="fas fa-check-circle mr-1.5"></i> PERN & MERN Architecture
+            <i className="fas fa-check-circle mr-1.5"></i> RESTful API Architecture
           </span>
           <span className="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs font-medium text-indigo-400">
-            <i className="fas fa-check-circle mr-1.5"></i> Double-Entry Accounting
+            <i className="fas fa-check-circle mr-1.5"></i> OOP Fundamentals
           </span>
           <span className="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs font-medium text-teal-400">
-            <i className="fas fa-check-circle mr-1.5"></i> Multi-Tenant SaaS Isolation
+            <i className="fas fa-check-circle mr-1.5"></i> PostgreSQL & MongoDB
           </span>
           <span className="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs font-medium text-yellow-400">
-            <i className="fas fa-check-circle mr-1.5"></i> AI API Integrations
+            <i className="fas fa-check-circle mr-1.5"></i> React & NestJS
           </span>
         </div>
       </div>
@@ -44,16 +47,16 @@ const About = () => (
           </h4>
           <ul className="space-y-3.5 text-sm text-slate-300">
             <li className="flex justify-between border-b border-slate-800/80 pb-2">
-              <span className="text-slate-400">Availability:</span>
-              <span className="font-semibold text-emerald-400">Immediate (0 Days)</span>
+              <span className="text-slate-400">Role:</span>
+              <span className="font-semibold text-emerald-400">Full Stack Developer</span>
             </li>
             <li className="flex justify-between border-b border-slate-800/80 pb-2">
               <span className="text-slate-400">Location:</span>
-              <span className="font-medium text-white">Nadiad / Vadodara</span>
+              <span className="font-medium text-white">Nadiad, Gujarat</span>
             </li>
             <li className="flex justify-between border-b border-slate-800/80 pb-2">
-              <span className="text-slate-400">Open To:</span>
-              <span className="font-medium text-white">Ahmedabad / Remote</span>
+              <span className="text-slate-400">Languages:</span>
+              <span className="font-medium text-white">English, Gujarati, Hindi</span>
             </li>
             <li className="flex justify-between border-b border-slate-800/80 pb-2">
               <span className="text-slate-400">B.Tech CGPA:</span>

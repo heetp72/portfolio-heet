@@ -15,7 +15,7 @@ const certifications = [
     link: "https://www.credly.com/badges/7a30b631-d16b-4476-a566-aa775c79195b/linked_in_profile",
     icon: "fab fa-aws text-orange-400",
     badge: "Credly Badge",
-    skills: "Cloud Computing, AI/ML Architecture, AWS Ecosystem"
+    skills: "Cloud Computing, AI/ML Concepts, AWS Cloud Ecosystem"
   },
   {
     title: "Google Cloud Fundamentals",
@@ -23,7 +23,7 @@ const certifications = [
     link: "https://www.cloudskillsboost.google/public_profiles/b80e7aea-13f6-4ec0-86f1-107bdb82b8bb/badges/15145440",
     icon: "fab fa-google text-blue-400",
     badge: "Google Certified",
-    skills: "GCP Infrastructure, Storage, Compute Engine & Cloud IAM"
+    skills: "GCP Infrastructure, Storage, Compute & Cloud Architecture"
   }
 ];
 
@@ -31,7 +31,7 @@ const Certifications = () => (
   <section id="certifications" className="py-20 max-w-5xl mx-auto">
     <div className="text-center mb-12">
       <h2 className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-2">Credentials</h2>
-      <h3 className="text-3xl sm:text-4xl font-extrabold text-white">Certifications & Badges</h3>
+      <h3 className="text-3xl sm:text-4xl font-extrabold text-white">Certificates</h3>
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -61,7 +61,7 @@ const Certifications = () => (
           </div>
 
           <div className="flex items-center gap-1 text-xs font-semibold text-emerald-400 group-hover:underline">
-            <span>Verify Badge</span>
+            <span>Verify Certificate</span>
             <i className="fas fa-arrow-up-right-from-square text-[10px]"></i>
           </div>
         </a>

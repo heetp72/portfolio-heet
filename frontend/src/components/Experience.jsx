@@ -2,54 +2,53 @@ import React from 'react';
 
 const experiences = [
   {
-    role: "Full Stack Developer Intern",
+    role: "Internship - Full Stack Developer",
     company: "SWC INFOTECH",
-    location: "Vadodara, Gujarat",
+    location: "Vadsar, Vadodara",
     period: "04/2026 – 08/2026",
-    badge: "240+ Commits Delivered",
+    badge: "Full Stack Development",
     badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
     description: [
-      "Delivered 240+ production commits across Earthmover ERP, OMS SaaS, and Medical CRM platforms using React 19, TypeScript, NestJS, Prisma ORM, and PostgreSQL.",
-      "Engineered double-entry ledger accounting modules, versioned Rent Rate Change algorithms, and live vehicle trip rate calculations.",
-      "Audited and resolved critical financial formula bugs (Balance = Revenue - Fuel - Expenses) with strict decimal precision safety.",
-      "Integrated Sarvam AI for consultation audio transcriptions, Puppeteer for automated headless A4 PDF reports, and Axios JWT silent token refresh interceptors.",
-      "Built multi-lingual localization (English, Hindi, Gujarati) with Noto Sans fonts and accessible keyboard ergonomics using custom useModalFocusTrap."
+      "Engineered and deployed \"medical-crm,\" a comprehensive Customer Relationship Management system for the healthcare sector using React, NestJS, and PostgreSQL.",
+      "Developed robust, scalable RESTful APIs utilizing the NestJS framework to handle patient data and seamlessly integrated them with a responsive React front-end.",
+      "Designed and managed the relational database architecture using PostgreSQL, ensuring data integrity, complex query optimization, and secure storage for medical records."
     ],
-    tech: ["React 19", "TypeScript", "NestJS", "Prisma ORM", "PostgreSQL", "TanStack Query", "Sarvam AI", "Puppeteer", "Redis", "i18next"]
+    tech: ["React", "Nest.js", "PostgreSQL", "REST APIs", "JavaScript", "SQL"]
   },
   {
-    role: "Web Development Intern",
+    role: "Internship - Web Development",
     company: "Svaapta Ally IT Solutions Pvt Ltd",
     location: "Alkapuri, Vadodara",
     period: "01/2026 – 03/2026",
-    badge: "Frontend Architecture",
+    badge: "Web Development",
     badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30",
     description: [
-      "Developed responsive, accessible web interfaces and complex enterprise forms using HTML5, CSS3, and modern JavaScript (ES6+).",
-      "Implemented client-side validation, sanitization, and responsive UI layouts for seamless user onboarding."
+      "Developed corporate-level web forms with client-side validation using HTML, CSS, and JavaScript, covering fields such as first name, last name, password, and gender."
     ],
-    tech: ["HTML5", "CSS3", "JavaScript ES6+", "Form Validation", "Responsive Design"]
+    tech: ["HTML", "CSS", "JavaScript", "Client-side Validation", "Web Forms"]
   },
   {
-    role: "Frontend Developer Intern",
+    role: "Internship",
     company: "Sparks To Ideas Pvt Ltd",
-    location: "Ahmedabad, Gujarat",
+    location: "Ahmedabad",
     period: "05/2025 – 06/2025",
-    badge: "UI Components",
+    badge: "Frontend UI",
     badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/30",
     description: [
-      "Engineered mobile-responsive UI components utilizing HTML5, CSS3, JavaScript, and Bootstrap framework.",
-      "Optimized cross-browser compatibility and page rendering performance across device form factors."
+      "Contributing to the development of responsive web interfaces using HTML, CSS, JavaScript, and Bootstrap."
     ],
-    tech: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "UI Optimization"]
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive UI"]
   }
 ];
 
 const Experience = () => (
   <section id="experience" className="py-20 max-w-5xl mx-auto">
     <div className="text-center mb-16">
-      <h2 className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-2">Track Record</h2>
+      <h2 className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-2">Experience</h2>
       <h3 className="text-3xl sm:text-4xl font-extrabold text-white">Professional Experience</h3>
+      <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-3">
+        Hands-on industry internships spanning full-stack application development, RESTful APIs, and responsive frontend interfaces.
+      </p>
     </div>
 
     <div className="space-y-8 relative before:absolute before:inset-0 before:left-5 md:before:left-1/2 md:before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-emerald-500 before:via-slate-800 before:to-transparent">
