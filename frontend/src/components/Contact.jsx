@@ -1,52 +1,67 @@
 import React, { useState } from 'react';
-import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
-  // Formspree integration: Using Formspree hook with customizable Form ID or direct endpoint
-  const formKey = process.env.REACT_APP_FORMSPREE_KEY || "xpwqgzyb";
-  const [state, handleFormspreeSubmit] = useForm(formKey);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
   const [copied, setCopied] = useState(false);
-  const [customSubmitted, setCustomSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [needsActivation, setNeedsActivation] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  // Fallback submit handler ensuring 100% reliable delivery to heetkapatel1505@gmail.com via Formspree API
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
+    setNeedsActivation(false);
 
     try {
-      const formData = new FormData(e.target);
-      // Attempt Formspree endpoint submission
-      const response = await fetch(`https://formspree.io/f/${formKey}`, {
+      const response = await fetch('https://formsubmit.co/ajax/heetkapatel1505@gmail.com', {
         method: 'POST',
-        body: formData,
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _replyto: formData.email,
+          _subject: formData.subject.trim() 
+            ? `Portfolio Message: ${formData.subject}` 
+            : `New Portfolio Message from ${formData.name}`,
+          message: formData.message,
+          _captcha: 'false',
+          _template: 'table'
+        })
       });
 
-      if (response.ok) {
-        setCustomSubmitted(true);
-        e.target.reset();
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        setIsSuccess(true);
+        setNeedsActivation(false);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        setIsSuccess(true);
+        setNeedsActivation(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        // Direct fallback to Formspree email endpoint
-        const fallbackRes = await fetch('https://formspree.io/f/heetkapatel1505@gmail.com', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        if (fallbackRes.ok) {
-          setCustomSubmitted(true);
-          e.target.reset();
-        } else {
-          // If server rejects, submit via native Formspree hook
-          handleFormspreeSubmit(e);
-        }
+        throw new Error(data.message || 'Submission failed. Please try again.');
       }
     } catch (err) {
-      handleFormspreeSubmit(e);
+      console.error('Submission error:', err);
+      setErrorMessage(
+        'Unable to send message via form service. Please try again or click the button below to send directly from your email client.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -58,7 +73,11 @@ const Contact = () => {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const isSuccess = state.succeeded || customSubmitted;
+  const mailtoHref = `mailto:heetkapatel1505@gmail.com?subject=${encodeURIComponent(
+    formData.subject || 'Portfolio Inquiry'
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+  )}`;
 
   return (
     <section id="contact" className="py-20 max-w-5xl mx-auto">
@@ -66,7 +85,7 @@ const Contact = () => {
         <h2 className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-2">Get In Touch</h2>
         <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">Let's Connect & Collaborate</h3>
         <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-          Send me a message below — inquiries will be delivered directly to my inbox.
+          Send me a message below — inquiries are delivered directly to my inbox at <span className="text-slate-300 font-medium">heetkapatel1505@gmail.com</span>.
         </p>
       </div>
 
@@ -91,8 +110,9 @@ const Contact = () => {
                   </a>
                   <button 
                     onClick={copyEmail}
-                    className="text-xs text-slate-400 hover:text-emerald-400" 
+                    className="text-xs text-slate-400 hover:text-emerald-400 transition-colors" 
                     title="Copy Email"
+                    type="button"
                   >
                     <i className={`fas ${copied ? 'fa-check text-emerald-400' : 'fa-copy'}`}></i>
                   </button>
@@ -148,92 +168,131 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Right 3 Cols: Message Form with Formspree */}
+        {/* Right 3 Cols: Message Form */}
         <div className="md:col-span-3">
           <div className="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800">
-            <h4 className="text-lg font-bold text-white mb-4 flex items-center justify-between">
-              <span>Send a Direct Message</span>
-              <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                Powered by Formspree
+            <div className="flex items-center justify-between mb-6">
+              <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                <i className="fas fa-paper-plane text-emerald-400"></i>
+                <span>Send a Direct Message</span>
+              </h4>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Direct to Inbox
               </span>
-            </h4>
+            </div>
             
             {isSuccess ? (
-              <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 space-y-2 text-center animate-fadeIn">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-xl">
-                  <i className="fas fa-check"></i>
+              <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 space-y-3 text-center animate-fadeIn">
+                <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl">
+                  <i className={`fas ${needsActivation ? 'fa-envelope-open' : 'fa-check'}`}></i>
                 </div>
-                <h5 className="text-base font-bold text-white">Message Sent Successfully!</h5>
-                <p className="text-xs text-slate-300">
-                  Thank you for reaching out. Your message has been routed to <strong>heetkapatel1505@gmail.com</strong>. I'll get back to you promptly!
-                </p>
+                <h5 className="text-lg font-bold text-white">
+                  {needsActivation ? 'Activation Email Sent!' : 'Message Sent Successfully!'}
+                </h5>
+                {needsActivation ? (
+                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                    FormSubmit has sent a one-time verification link to <strong className="text-emerald-300">heetkapatel1505@gmail.com</strong>. Please check your Gmail (or Spam) and click <strong className="text-white">"Activate Form"</strong> once. After that, all viewer submissions will arrive directly in your inbox!
+                  </p>
+                ) : (
+                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                    Thank you for reaching out! Your message has been sent directly to <strong className="text-emerald-300">heetkapatel1505@gmail.com</strong>. I'll get back to you promptly!
+                  </p>
+                )}
                 <button
-                  onClick={() => setCustomSubmitted(false)}
-                  className="mt-3 px-4 py-1.5 text-xs rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200"
+                  onClick={() => setIsSuccess(false)}
+                  className="mt-4 px-5 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors cursor-pointer"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-4">
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs space-y-2">
+                    <p className="flex items-center gap-2">
+                      <i className="fas fa-circle-exclamation text-red-400"></i>
+                      <span>{errorMessage}</span>
+                    </p>
+                    <a
+                      href={mailtoHref}
+                      className="inline-flex items-center gap-1.5 text-emerald-400 underline font-semibold hover:text-emerald-300"
+                    >
+                      <i className="fas fa-envelope-open-text"></i> Open in Email App instead
+                    </a>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-medium text-slate-400 mb-1.5">Your Name</label>
+                    <label htmlFor="name" className="block text-xs font-medium text-slate-400 mb-1.5">
+                      Your Name <span className="text-emerald-400">*</span>
+                    </label>
                     <input
                       id="name"
                       type="text"
                       name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       placeholder="e.g. John Doe"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                     />
-                    <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-400 text-xs mt-1" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs font-medium text-slate-400 mb-1.5">Your Email</label>
+                    <label htmlFor="email" className="block text-xs font-medium text-slate-400 mb-1.5">
+                      Your Email <span className="text-emerald-400">*</span>
+                    </label>
                     <input
                       id="email"
                       type="email"
                       name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       placeholder="john@company.com"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                     />
-                    <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-400 text-xs mt-1" />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-xs font-medium text-slate-400 mb-1.5">Subject</label>
+                  <label htmlFor="subject" className="block text-xs font-medium text-slate-400 mb-1.5">
+                    Subject
+                  </label>
                   <input
                     id="subject"
                     type="text"
                     name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     placeholder="Full Stack Developer Opportunity / Project Inquiry"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   />
-                  <ValidationError prefix="Subject" field="subject" errors={state.errors} className="text-red-400 text-xs mt-1" />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-medium text-slate-400 mb-1.5">Message</label>
+                  <label htmlFor="message" className="block text-xs font-medium text-slate-400 mb-1.5">
+                    Message <span className="text-emerald-400">*</span>
+                  </label>
                   <textarea
                     id="message"
                     name="message"
                     rows="4"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Hi Heet, we'd love to connect with you regarding..."
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
                   ></textarea>
-                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-400 text-xs mt-1" />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={state.submitting || isSubmitting}
-                  className="w-full py-3.5 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-bold rounded-xl transition-all duration-300 shadow-md shadow-emerald-500/20 hover:scale-[1.02] flex items-center justify-center gap-2 text-sm disabled:opacity-50 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-bold rounded-xl transition-all duration-300 shadow-md shadow-emerald-500/20 hover:scale-[1.01] flex items-center justify-center gap-2 text-sm disabled:opacity-50 cursor-pointer"
                 >
-                  {(state.submitting || isSubmitting) ? (
+                  {isSubmitting ? (
                     <>
                       <i className="fas fa-spinner fa-spin"></i>
                       <span>Sending Message...</span>
