@@ -9,11 +9,46 @@ const experiences = [
     badge: "Full Stack Development",
     badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
     description: [
-      "Engineered and deployed \"medical-crm,\" a comprehensive Customer Relationship Management system for the healthcare sector using React, NestJS, and PostgreSQL.",
-      "Developed robust, scalable RESTful APIs utilizing the NestJS framework to handle patient data and seamlessly integrated them with a responsive React front-end.",
-      "Designed and managed the relational database architecture using PostgreSQL, ensuring data integrity, complex query optimization, and secure storage for medical records."
+      "Architected, built, and deployed 3 enterprise-grade full-stack systems: Earthmover ERP, Earthmover OMS, and Medica CRM.",
+      "Engineered robust, high-throughput RESTful APIs utilizing NestJS to handle complex enterprise workflows, patient records, and real-time order processing.",
+      "Designed and optimized PostgreSQL relational database schemas, query indexing, data validation pipelines, and secure authentication for seamless React frontend integration."
     ],
-    tech: ["React", "Nest.js", "PostgreSQL", "REST APIs", "JavaScript", "SQL"]
+    deployedProjects: [
+      {
+        id: "earthmover-erp",
+        name: "Earthmover ERP",
+        category: "Enterprise Resource Planning",
+        badge: "Live ERP",
+        url: "https://earthmover-erp.swcinfotech.com",
+        displayUrl: "earthmover-erp.swcinfotech.com",
+        role: "Full Stack & Database Architecture",
+        description: "Comprehensive ERP platform managing enterprise resources, operations, and analytical reporting.",
+        tech: ["React", "NestJS", "PostgreSQL", "REST APIs"]
+      },
+      {
+        id: "earthmover-oms",
+        name: "Earthmover OMS",
+        category: "Order Management System",
+        badge: "Live OMS",
+        url: "https://earthmover-oms.swcinfotech.com",
+        displayUrl: "earthmover-oms.swcinfotech.com",
+        role: "Order Pipeline & Inventory Fulfillment",
+        description: "Order management and fulfillment tracking system with automated status workflows.",
+        tech: ["React", "NestJS", "PostgreSQL", "Workflow Engine"]
+      },
+      {
+        id: "medica-crm",
+        name: "Medica CRM",
+        category: "Healthcare CRM Platform",
+        badge: "Live CRM",
+        url: "https://joyzen-stage.swcinfotech.com/",
+        displayUrl: "joyzen-stage.swcinfotech.com",
+        role: "Patient Record & Healthcare Workflows",
+        description: "Healthcare CRM platform for patient data handling, medical workflows, and records management.",
+        tech: ["React", "NestJS", "PostgreSQL", "Role-Based Access"]
+      }
+    ],
+    tech: ["React", "Nest.js", "PostgreSQL", "REST APIs", "JavaScript", "SQL", "Tailwind CSS"]
   },
   {
     role: "Internship - Web Development",
@@ -40,6 +75,53 @@ const experiences = [
     tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive UI"]
   }
 ];
+
+const LiveProjectCard = ({ project }) => {
+  return (
+    <div className="bg-slate-900/90 border border-slate-800/90 hover:border-emerald-500/40 rounded-2xl p-4 transition-all duration-300 shadow-md group/card">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <h5 className="text-sm font-bold text-white tracking-tight group-hover/card:text-emerald-400 transition-colors">
+            {project.name}
+          </h5>
+        </div>
+        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          {project.badge}
+        </span>
+      </div>
+
+      <p className="text-xs text-slate-300 mb-1.5 font-medium">{project.role}</p>
+      <p className="text-xs text-slate-400 mb-3 leading-relaxed">{project.description}</p>
+
+      {/* Live Link Button */}
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-between w-full px-3.5 py-2.5 mb-2.5 text-xs font-semibold text-emerald-300 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-500/30 hover:border-emerald-500/60 rounded-xl transition-all shadow-sm group/link"
+      >
+        <span className="flex items-center gap-2 truncate">
+          <i className="fas fa-globe text-emerald-400"></i>
+          <span className="truncate font-mono text-[11px]">{project.displayUrl}</span>
+        </span>
+        <span className="flex items-center gap-1.5 text-[11px] text-emerald-400 group-hover/link:translate-x-0.5 transition-transform flex-shrink-0 font-medium">
+          <span>Live Demo</span>
+          <i className="fas fa-arrow-up-right-from-square text-[10px]"></i>
+        </span>
+      </a>
+
+      {/* Tech Tags */}
+      <div className="flex flex-wrap gap-1 pt-2 border-t border-slate-800/70">
+        {project.tech.map((t, idx) => (
+          <span key={idx} className="px-2 py-0.5 bg-slate-950 text-slate-400 text-[10px] font-mono rounded border border-slate-800">
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Experience = () => (
   <section id="experience" className="py-20 max-w-5xl mx-auto">
@@ -83,6 +165,28 @@ const Experience = () => (
                 </li>
               ))}
             </ul>
+
+            {/* Live Deployed Projects Showcase */}
+            {exp.deployedProjects && exp.deployedProjects.length > 0 && (
+              <div className="mb-6 pt-5 border-t border-slate-800/80">
+                <div className="flex items-center justify-between mb-3.5">
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-rocket text-emerald-400 text-xs"></i>
+                    <h5 className="text-xs font-bold uppercase tracking-wider text-white">
+                      Live Enterprise Projects
+                    </h5>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                    3 Live Demos
+                  </span>
+                </div>
+                <div className="space-y-3.5">
+                  {exp.deployedProjects.map((proj) => (
+                    <LiveProjectCard key={proj.id} project={proj} />
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800/80">
               {exp.tech.map((t, i) => (

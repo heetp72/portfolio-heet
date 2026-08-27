@@ -70,7 +70,12 @@ const commands = [
     "company": "SWC INFOTECH",
     "role": "Internship - Full Stack Developer",
     "period": "04/2026 – 08/2026",
-    "keyWork": "Engineered and deployed medical-crm using React, NestJS, PostgreSQL"
+    "liveProjects": [
+      "Earthmover ERP (earthmover-erp.swcinfotech.com)",
+      "Earthmover OMS (earthmover-oms.swcinfotech.com)",
+      "Medica CRM (joyzen-stage.swcinfotech.com)"
+    ],
+    "stack": ["React", "NestJS", "PostgreSQL", "REST APIs"]
   },
   {
     "company": "Svaapta Ally IT Solutions Pvt Ltd",

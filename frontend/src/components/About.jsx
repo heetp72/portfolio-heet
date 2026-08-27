@@ -14,7 +14,7 @@ const About = () => (
           I am a <strong className="text-white">Full Stack Developer</strong> with strong <span className="text-emerald-400 font-semibold">OOP fundamentals</span> and hands-on experience in <span className="text-emerald-400 font-semibold">REST API development</span>.
         </p>
         <p>
-          During my professional internship at <strong className="text-emerald-400">SWC INFOTECH</strong>, I engineered and deployed <strong className="text-white">"medical-crm"</strong>, a comprehensive healthcare CRM using React, NestJS, and PostgreSQL. I developed scalable RESTful APIs to handle patient data and designed optimized relational database schemas ensuring data integrity and secure medical records management.
+          During my professional internship at <strong className="text-emerald-400">SWC INFOTECH</strong>, I engineered, integrated, and deployed 3 live enterprise applications: <strong className="text-white">Earthmover ERP</strong>, <strong className="text-white">Earthmover OMS</strong>, and <strong className="text-white">Medica CRM</strong> (Joyzen) using React, NestJS, and PostgreSQL. I developed scalable RESTful APIs, implemented complex workflow automations, and designed optimized relational database schemas ensuring data integrity, high availability, and secure enterprise recordkeeping.
         </p>
         <p>
           Additionally, through internships at <strong className="text-white">Svaapta Ally IT Solutions</strong> and <strong className="text-white">Sparks To Ideas</strong>, I gained extensive experience building corporate-level web forms with robust client-side validation and responsive user interfaces using HTML, CSS, JavaScript, and Bootstrap.
