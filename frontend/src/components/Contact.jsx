@@ -10,7 +10,6 @@ const Contact = () => {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [needsActivation, setNeedsActivation] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
@@ -22,7 +21,6 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage('');
-    setNeedsActivation(false);
 
     try {
       const response = await fetch('https://formsubmit.co/ajax/heetkapatel1505@gmail.com', {
@@ -46,13 +44,8 @@ const Contact = () => {
 
       const data = await response.json();
 
-      if (response.ok && (data.success === 'true' || data.success === true)) {
+      if (response.ok && (data.success === 'true' || data.success === true || (data.message && data.message.toLowerCase().includes('activation')))) {
         setIsSuccess(true);
-        setNeedsActivation(false);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else if (data.message && data.message.toLowerCase().includes('activation')) {
-        setIsSuccess(true);
-        setNeedsActivation(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         throw new Error(data.message || 'Submission failed. Please try again.');
@@ -185,20 +178,14 @@ const Contact = () => {
             {isSuccess ? (
               <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 space-y-3 text-center animate-fadeIn">
                 <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl">
-                  <i className={`fas ${needsActivation ? 'fa-envelope-open' : 'fa-check'}`}></i>
+                  <i className="fas fa-check"></i>
                 </div>
                 <h5 className="text-lg font-bold text-white">
-                  {needsActivation ? 'Activation Email Sent!' : 'Message Sent Successfully!'}
+                  Message Sent Successfully!
                 </h5>
-                {needsActivation ? (
-                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                    FormSubmit has sent a one-time verification link to <strong className="text-emerald-300">heetkapatel1505@gmail.com</strong>. Please check your Gmail (or Spam) and click <strong className="text-white">"Activate Form"</strong> once. After that, all viewer submissions will arrive directly in your inbox!
-                  </p>
-                ) : (
-                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thank you for reaching out! Your message has been sent directly to <strong className="text-emerald-300">heetkapatel1505@gmail.com</strong>. I'll get back to you promptly!
-                  </p>
-                )}
+                <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                  Thank you for reaching out! Your message has been received. <strong className="text-emerald-300">Heet</strong> will connect with you as soon as possible!
+                </p>
                 <button
                   onClick={() => setIsSuccess(false)}
                   className="mt-4 px-5 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors cursor-pointer"
